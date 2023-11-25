@@ -1,0 +1,518 @@
+{% extends 'include/homepage.html' %}
+{% load static %}
+{% block content %}
+	<!-- Container -->
+	<div id="container">
+
+		<!-- home-section 
+			================================================== -->
+		<section id="home-section" class="slider1">
+			
+			<!--
+			#################################
+				- THEMEPUNCH BANNER -
+			#################################
+			-->
+			<div class="tp-banner-container">
+				<div class="tp-banner" >
+					<ul>	<!-- SLIDE  -->
+						{% for slide in slide %}
+						<li data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on"  data-title="Intro Slide">
+							<!-- MAIN IMAGE -->
+							<img src="{{slide.image.url}}"  alt="slidebg1" data-lazyload="{{slide.image.url}}" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+							<!-- LAYERS -->
+
+							<!-- LAYER NR. 1 -->
+							<div class="tp-caption finewide_medium_white lft tp-resizeme rs-parallaxlevel-0"
+								data-x="center"
+								data-y="240" 
+								data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+								data-speed="500"
+								data-start="1200"
+								data-easing="Power3.easeInOut"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.05"
+								data-endelementdelay="0.05"
+								style="z-index: 8; white-space: nowrap;">{{slide.title}}
+							</div>
+
+							<!-- LAYER NR. 2 -->
+							<div class="tp-caption small_text lfb tp-resizeme rs-parallaxlevel-0"
+								data-x="center"
+								data-y="475" 
+								data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+								data-speed="500"
+								data-start="1800"
+								data-easing="Power3.easeInOut"
+								data-splitin="none"
+								data-splitout="none"
+								data-elementdelay="0.05"
+								data-endelementdelay="0.1"
+								style="z-index: 7; white-space: nowrap;">{{slide.descriptions}}
+							</div>
+
+						</li>
+						{% endfor %}
+					</ul>
+					<div class="tp-bannertimer"></div>
+				</div>
+			</div>
+		</section>
+		<!-- End home section -->
+		<!-- Header
+		    ================================================== -->
+		<header class="clearfix trans">
+			<nav class="navbar navbar-default navbar-static-top" role="navigation">
+				<div class="container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="index.html"><img src="{{settings.logo.url}}" width = "20px" alt=""></a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right navigate-section">
+							<li><a class="active" href="#home-section">Главная страница</a></li>
+							<li><a href="#about-section">О нас</a></li>
+							<li><a href="#special-section">Предложение</a></li>
+							<li><a href="#menu-section">Меню</a></li>
+							<li><a href="#reservation-section">Бронирование</a></li>
+							<li><a href="#team-section">Команда</a></li>
+							<li><a href="#gallery-section">Галерея</a></li>
+							<li><a href="#contact-section">Контакты</a></li>
+							<li><a href="blog.html">Новости</a></li>
+							<li class="search drop"><a href="#" class="open-search"><i class="fa fa-search"></i></a>
+								<form class="form-search">
+									<input type="search" placeholder="Search:"/>
+									<button type="submit">
+										<i class="fa fa-search"></i>
+									</button>
+								</form>
+							</li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>
+		</header>
+		<!-- End Header -->
+
+		<!-- about-section 
+			================================================== -->
+		<section id="about-section">
+			<div class="container">
+				<div class="title-section">
+					<h1>Откройте для себя нашу историю</h1>
+					<p>{{about.descriptions}}</p>
+				</div>
+				<div class="about-box">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="image-holder">
+								<img src="{{history.image_1.url}}" alt="">
+								<img class="snd-img" src="{{history.image_2.url}}" alt="">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="rest-about-box">
+								<h1>Наша история</h1>
+								<p>{{history.descriptions}}</p>
+								<img src="{% static 'images/sign.png' %}" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</section>
+		<!-- End about section -->
+
+		<!-- special-section 
+			================================================== -->
+		<section id="special-section">
+			<div class="container">
+				<div class="title-section white">
+					<h1>Сегодняшнее специальное предложение</h1>
+				</div>
+			</div>
+			<div class="container">
+				<div class="today-special-box">
+					<div class="food-line">
+						{% for offer in offer %}
+						<div class="food-post">
+							<div class="inner-food-post">
+								<div class="food-gal">
+									<img src="{{offer.image.url}}	" alt="">
+								</div>
+								<div class="food-content">
+									<div class="food-content-box">
+										<h2><a href="#">{{offer.title}}</a></h2>
+										<p>{{offer.descriptions}} </p>
+										<span class="price">{{offer.price}}</span>
+										<span class="category">{{offer.type}}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					
+				</div>
+			</div>
+		</section>
+		<!-- End special section -->
+
+		<!--menu-section 
+			================================================== -->
+		<section id="menu-section">
+			<div class="container">
+				<div class="title-section">
+					<h1>Наше меню</h1>
+					<p>В первоклассном ресторане все столики всегда зарезервированы и пусты. В этот ресторан больше никто не ходит, потому что он всегда переполнен.</p>
+				</div>
+				<div class="menu-box">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#lunch" aria-controls="lunch" role="tab" data-toggle="tab">ОБЕД</a></li>
+						<li role="presentation"><a href="#dinner" aria-controls="dinner" role="tab" data-toggle="tab">УЖИН</a></li>
+						<li role="presentation"><a href="#desserts" aria-controls="desserts" role="tab" data-toggle="tab">ДЕСЕРТЫ</a></li>
+						<li role="presentation"><a href="#drinks" aria-controls="drinks" role="tab" data-toggle="tab">НАПИТКИ</a></li>
+					</ul>
+					<div class="tab-content">
+						
+						<div role="tabpanel" class="tab-pane active" id="{{menu.type}}">
+							{% for menu in menu %}
+							<div class="row">
+								<div class="col-md-6">
+									<ul class="menu-list-items">
+										<li>											
+											<div class="list-image">
+												<img src="{{menu.image.url}}" alt="">
+												<span>Новый</span>
+											</div>
+											<div class="list-content">
+												<h2>{{menu.title}} <span>{{menu.price}}</span></h2>
+												<p>{{menu.descriptions}}</p>
+											</div>
+										</li>
+										{% endfor %}
+										
+										
+									</ul>
+								</div>
+								
+							</div>
+						</div>
+						
+						
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<!-- End menu-section -->
+
+		<!-- reservation-section
+			================================================== -->
+		<section id="reservation-section">
+			<div class="container">
+				<div class="reservation-box">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="title-section white">
+								<h1>Забронировать</h1>
+								<p>Забронировать столик еще никогда не было так просто благодаря бесплатному и мгновенному онлайн-
+									бронированию столика в ресторане. Бронируйте сейчас!</p>
+							</div>
+							<form class="reservation-form">
+								<label>Имя гостя:</label>
+								<input type="text" name="name-guest" id="name-guest" placeholder="Name"/>
+								<label>Дата:</label>
+								<input type="text" name="date-guest" id="date-guest" placeholder="mm/dd/yyyy"/>
+								<div class="row">
+									<div class="col-md-6">
+										<label>Время:</label>
+										<input type="text" name="time-guest" id="time-guest" placeholder="7:00 pm"/>
+									</div>
+									<div class="col-md-6">
+										<label>Перс:</label>
+										<input type="text" name="pers-guest" id="pers-guest" placeholder="2 people"/>
+									</div>
+								</div>
+								<input type="submit" name="submit-reservation" id="submit-reservation" value="Find a Table" />
+								<div id="msg-rsv"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End reservation-section -->
+
+		<!-- team-section
+			================================================== -->
+		<section id="team-section">
+			<div class="container">
+				<div class="title-section">
+					<h1>Познакомьтесь с нашей командой</h1>
+					<p>Но лук. Завтрашний результат</p>
+				</div>
+				<div class="team-box owl-wrapper">
+					<div class="owl-carousel" data-num="4">
+						{% for team in team %}
+						<div class="item team-post">
+							<div class="inner-team-post">
+								<div class="team-gal">
+									<img src="{{team.image.url}}" alt="">
+								</div>
+								<h2>{{team.name}}</h2>
+								<span>{{team.rank}}</span>
+								<p>{{team.description}} </p>
+								<ul class="social-icons">
+									<li><a class="facebook" href="{{team.facebook}}"><i class="fa fa-facebook"></i></a></li>
+									<li><a class="twitter" href="{{team.youtube}}"><i class="fa fa-youtube"></i></a></li>
+									<li><a class="instagram" href="{{team.instagram}}"><i class="fa fa-instagram"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						{% endfor %}
+
+						
+
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End team-section -->
+
+		<!-- statistic-section 
+			================================================== -->
+		<section class="statistic-section">
+			<div class="container">
+				
+				<div class="statistic-box">
+					<div class="row">
+						<div class="col-md-3 col-sm-6">
+							<div class="statistic-post">
+								<p><span class="timer" data-from="0" data-to="{{experience.year}}"></span></p>
+								<h2>Многолетний опыт</h2>
+								<p>{{experience.description}}</p>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+							<div class="statistic-post">
+								<p><span class="timer" data-from="0" data-to="{{cooking.time}}"></span></p>
+								<h2>Часы приготовления</h2>
+								<p>{{cooking.description}}</p>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+							<div class="statistic-post">
+								<p><span class="timer" data-from="0" data-to="{{clients.happy_clients}}"></span></p>
+								<h2>Счастливые клиенты</h2>
+								<p>{{clients.description}}</p>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+							<div class="statistic-post">
+								<p><span class="timer" data-from="0" data-to="{{chefs.experience}}"></span></p>
+								<h2>Опытные повара</h2>
+								<p>{{chefs.description}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End statistic section -->
+
+		<!-- gallery-section 
+			================================================== -->
+		<section id="gallery-section">
+			<div class="container">
+				<div class="title-section">
+					<h1>Наша галерея</h1>
+					<p></p>
+				</div>
+				<ul class="filter">
+					<li><a class="active" href="#" data-filter="*">Все</a></li>
+					<li><a href="#" data-filter=".desert">Дессерт</a></li>
+					<li><a href="#" data-filter=".rest">Рестаран</a></li>
+					<li><a href="#" data-filter=".dinner">Ужин</a></li>
+				</ul>
+			</div>
+			{% for gallery in gallery %}
+			<div class="gallery-box iso-call">
+				<div class="gal-project desert rest">
+					<img src="{{galery.image.url}}" alt="">
+					<div class="hover-gal">
+						<div class="inner-gal">
+							<h2>{{gellery.description}}</h2>
+							<span>{{gallery.name}}</span>
+						</div>
+					</div>
+					
+				</div>
+				{% endfor %}
+
+				{% for dinner in dinner %}
+				<div class="gal-project dinner">
+					
+					<img src="{{dinner.image.url}}" alt="">
+					<div class="hover-gal">
+						<div class="inner-gal">
+							<h2>{{dinner.description}}</h2>
+							<span>{{dinner.name}}</span>
+						</div>
+					</div>
+					
+				</div>
+				{% endfor %}
+
+				{% for rest in rest %}
+				<div class="gal-project rest">
+					
+					<img src="{{rest.image.url}}" alt="">
+					<div class="hover-gal">
+						<div class="inner-gal">
+							<h2>{{rest.description}}</h2>
+							<span>{{rest.name}}</span>
+						</div>
+					</div>
+					
+				</div>
+				{% endfor %}
+				
+				{% for rest in rest %}
+				<div class="gal-project rest">
+					
+					<img src="{{rest.image.url}}" alt="">
+					<div class="hover-gal">
+						<div class="inner-gal">
+							<h2>{{rest.description}}</h2>
+							<span>{{rest.name}}</span>
+						</div>
+					</div>
+					
+				</div>
+				{% endfor %}
+				
+				{% for dinner in dinner %}
+				<div class="gal-project dinner">
+					
+					<img src="{{dinner.image.url}}" alt="">
+					<div class="hover-gal">
+						<div class="inner-gal">
+							<h2>{{dinner.description}}</h2>
+							<span>{{dinner.name}}</span>
+						</div>
+					</div>
+					
+				</div>
+				{% endfor %}
+				
+				{% for dessert in dessert %}
+				<div class="gal-project desert">
+					
+					<img src="{{dessert.image.url}}" alt="">
+					<div class="hover-gal">
+						<div class="inner-gal">
+							<h2>{{dessert.description}}</h2>
+							<span>{{dessert.name}}</span>
+						</div>
+					</div>
+					
+				</div>
+				{% endfor %}
+			</div>
+		</section>
+		<!-- End gallery section -->
+
+		<!-- Conctact section 
+			================================================== -->
+		<section id="contact-section">
+
+			<div class="upper-part">
+				<div class="container">
+					<div class="title-section white">
+						<h1>Связаться</h1>
+					</div>
+					<div class="widget-area">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="info-widget">
+									<h1>
+										Контактная информация
+									</h1>
+									<p>{{settings.address}}</p>
+									<p>
+										<span>{{settings.phone}}</span>
+									</p>
+									<p>{{settings.email}}</p>
+									<ul class="social-icons">
+										<li><a class="facebook" href="{{settings.facebook}}"><i class="fa fa-facebook"></i></a></li>
+										<li><a class="instagram" href="{{settings.instagram}}"><i class="fa fa-instagram"></i></a></li>
+										<li><a class="youtube" href="{{settings.youtube}}"><i class="fa fa-youtube"></i></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="info-widget">
+									<h1>
+										Открытые часы
+									</h1>
+									<p>
+										<span>Monday — Thursday</span>
+										<span class="time">8 am — 11 pm</span>
+									</p>
+									<p>
+										<span>Friday — Sunday</span>
+										<span class="time">11 am — 11 pm</span>
+									</p>
+									<p>Note: Restaurant is closed on holidays.</p>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="info-widget">
+									<h1>
+										Скажи привет!
+									</h1>
+
+									<form id="contact-form">
+										<input name="name" id="name" type="text" placeholder="Name*">
+										<input name="mail" id="mail" type="text" placeholder="Email*">
+										<textarea name="comment" id="comment" placeholder="*Message*"></textarea>
+										<div class="submit-area">
+											<input type="submit" id="submit_contact" value="Send Message">
+											<div id="msg" class="message"></div>								
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="map"></div>
+		</section>
+		<!-- End contact section -->
+
+		<!-- footer 
+			================================================== -->
+		<footer>
+			<p class="copyright">
+				&copy; Copyright 2018. "Plato" by Nunforest. All rights reserved.
+			</p>
+		</footer>
+		<!-- End footer -->
+
+	</div>
+	<!-- End Container -->
+{% endblock %}
